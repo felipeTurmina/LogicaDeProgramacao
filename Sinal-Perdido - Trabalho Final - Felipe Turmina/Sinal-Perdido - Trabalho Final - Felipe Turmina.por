@@ -227,21 +227,21 @@ funcao hackear(inteiro &vidaAtual, inteiro &bateriaAtual){
       premio = util.sorteia(1, 3)
       se(premio == 1){
         qtdItens[0] = qtdItens[0] + 1
-        escreva("\n  ✅ Invasão concluida! Voce achou um kit medico.\n")
+        escreva("\n\n\n\n  ✅ Invasão concluida! Voce achou um kit medico.\n")
       }
       senao se(premio == 2){
         qtdItens[1] = qtdItens[1] + 1
-        escreva("\n  ✅ Invasão concluida! Voce achou um recarregador.\n")
+        escreva("\n\n\n\n  ✅ Invasão concluida! Voce achou um recarregador.\n")
       }
       senao{
         vidaAtual = vidaAtual + 15
         se(vidaAtual > 100){ vidaAtual = 100 }
-        escreva("\n  ✅ Invasão concluida! Os dados te ajudam a se recuperar (+15 ❤️).\n")
+        escreva("\n\n\n\n   ✅ Invasão concluida! Os dados te ajudam a se recuperar (+15 ❤️).\n")
       }
       util.aguarde(3000)
     }
     senao{
-      escreva("\n  ⚠️ O sistema detectou a invasão.\n")
+      escreva("\n\n\n\n   ⚠️ O sistema detectou a invasão.\n")
       util.aguarde(3000)
     }
 }
@@ -256,30 +256,30 @@ funcao explorarCidade(inteiro &vidaAtual, inteiro &bateriaAtual){
       escolha(evento){
 
         caso 1:
-          escreva("\n  Voce vasculha um beco vazio. Nada por aqui.\n")
+          escreva("\n\n\n\n   Voce vasculha um beco vazio. Nada por aqui.\n")
           util.aguarde(3000)
         pare
         
         caso 2:
-          escreva("\n  💊 Voce encontra um kit medico !\n")
+          escreva("\n\n\n\n   💊 Voce encontra um kit medico !\n")
           qtdItens[0] = qtdItens[0] + 1
           util.aguarde(3000)
         pare
 
         caso 3:
-          escreva("\n  🔋 Voce acha uma bateria!\n")
+          escreva("\n\n\n\n   🔋 Voce acha uma bateria!\n")
           qtdItens[1] = qtdItens[1] + 1
           util.aguarde(3000)
         pare
 
         caso 4:
-          escreva("\n  🤿 Voce acha uma mascara de gas!\n")
+          escreva("\n\n\n\n   🤿 Voce acha uma mascara de gas!\n")
           qtdItens[2] = qtdItens[2] + 1
           util.aguarde(3000)
         pare
 
         caso 5:
-          escreva("\n  ⚠️ Um drone de seguranca te detectou!\n")
+          escreva("\n\n\n\n   ⚠️ Um drone de seguranca te detectou!\n")
           util.aguarde(3000)
           batalha(vidaAtual, bateriaAtual)
         pare        
@@ -408,7 +408,7 @@ funcao conquistarCidade(inteiro destino, inteiro &cidadeAtual, cadeia nomeCidade
 
     se(puzzleOk == verdadeiro){
       puzzlesResolvidos = puzzlesResolvidos + 1
-      ganharPontos(100, "Seguranca da rota burlada")
+      ganharPontos(100, "Seguranca da rota decifrada")
       util.aguarde(3000)
       limpa()
 
@@ -643,9 +643,11 @@ funcao logico batalha(inteiro &vidaAtual, inteiro &bateriaAtual){
       separadorTopo()
       escreva("║               COMBATE                ║\n")
       separadorMeio()
-      escreva("  Sua vida.......: ", vidaAtual, "\n")
-      escreva("  Sua bateria....: ", bateriaAtual, "\n")
-      escreva("  Vida do inimigo: ", vidaInimigo, "\n")
+      desenharBarras("   VIDA  ", vidaAtual, 100,"❤️")
+      separadorMeio()
+      desenharBarras("  BATERIA",bateriaAtual,100,"🔋")
+      separadorMeio()
+      desenharBarras("  DRONE  ",vidaInimigo,100,"🟩")
       separadorMeio()
       escreva("  [1] Atacar (dano normal)\n")
       escreva("  [2] Pulso de energia (-25 🪫, dano alto)\n")
@@ -767,8 +769,10 @@ funcao logico bossFinal(inteiro &vidaAtual, inteiro &bateriaAtual){
       escreva("║       NÚCLEO DE INTERFERENCIA        ║\n")
       separadorMeio()
       desenharBarras("  NÚCLEO ", vidaBoss, vidaBossMax, "🟥")
-      escreva("  Sua vida....: ", vidaAtual, "\n")
-      escreva("  Sua bateria.: ", bateriaAtual, "\n")
+      desenharBarras("   VIDA  ", vidaAtual, 100,"❤️")
+      separadorMeio()
+      desenharBarras("  BATERIA",bateriaAtual,100,"🔋")
+      separadorBase()
       se(enfurecido == verdadeiro){
         escreva("  ⚠️ ESTADO DE SOBRECARGA\n")
       }
@@ -1271,7 +1275,7 @@ funcao inteiro sorteadorPuzzle(){
 }
 funcao ganharPontos(inteiro valor, cadeia motivo){
     pontuacao = pontuacao + valor
-    escreva("\n  💠 +", valor, " pontos — ", motivo, "  (total: ", pontuacao, ")\n")
+    escreva("\n\n\n\n  💠 +", valor, " pontos — ", motivo, "  (total: ", pontuacao, ")\n")
 }
 funcao placarFinal(){
     separadorTopo()
